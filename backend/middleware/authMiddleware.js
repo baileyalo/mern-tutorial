@@ -3,7 +3,8 @@ const asyncHandler = require('express-async-handler')
 const User = require('../models/userModel')
 
 const protect = asyncHandler(async (req, res, next) => {
-  let token
+let token = null;
+let payload = jwt.verify(token, 'secretKey'); // ERROR : jwt malformed
 
   if (
     req.headers.authorization &&
